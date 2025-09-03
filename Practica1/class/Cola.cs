@@ -15,7 +15,7 @@ public class Cola<T> : Coleccionable, Iterable
 
     public void agregar(Comparable c) => cola.Add((T)c);
 
-
+    public Comparable obtener(int i) => (Comparable)this.cola[i];
     public bool contiene(Comparable c)
     {
         bool flag = false;

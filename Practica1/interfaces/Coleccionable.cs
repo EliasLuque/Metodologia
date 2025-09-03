@@ -5,4 +5,5 @@ public interface Coleccionable
     public Comparable maximo();
     public void agregar(Comparable c);
     public bool contiene(Comparable c);
+    public Comparable obtener(int i);
 }

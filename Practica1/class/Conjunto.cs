@@ -9,7 +9,7 @@ public class Conjunto<T> : Coleccionable, Iterable
 
     public int cuantos() => this.conjunto.Count();
     public void agregar(Comparable c) => conjunto.Add((T)c);
-
+    public Comparable obtener(int i) => (Comparable)this.conjunto[i];
     public bool pertenece(Comparable c) => contiene(c);
 
     public bool contiene(Comparable c)

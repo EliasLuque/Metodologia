@@ -15,6 +15,7 @@ public class Pila<T> : Coleccionable, Iterable
 
     public void agregar(Comparable c) => pila.Add((T)c);
 
+    public Comparable obtener(int i) => (Comparable)this.pila[i];
 
     public bool contiene(Comparable c)
     {
