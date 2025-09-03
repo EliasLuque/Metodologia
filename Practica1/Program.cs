@@ -11,8 +11,8 @@
 static void informar(Coleccionable c)
 {
     Console.WriteLine("Cantidad de elementos: {0}", c.cuantos());
-    Console.WriteLine("Elemento Mínimo: {0}", ((Alumno)c.minimo()).getNombre());
-    Console.WriteLine("Elemento Máximo: {0}", ((Alumno)c.maximo()).getNombre());
+    Console.WriteLine("Elemento Mínimo: {0}", c.minimo().ToString());
+    Console.WriteLine("Elemento Máximo: {0}", c.maximo().ToString());
 
     // Console.Write("Ingrese un valor: ");
     // int elem = int.Parse(Console.ReadLine());
@@ -44,6 +44,8 @@ static void llenarAlumnos(Coleccionable c)
         double promedio = Math.Round(randPromedio.NextDouble() * 10, 2);
 
         Comparable alumno = new Alumno(nombre, dni, legajo, promedio);
+        // Ejercicio 2
+        ((Alumno)alumno).cambiarEstrategia(new ComparacionPorNombre());
         c.agregar(alumno);
     }
 }

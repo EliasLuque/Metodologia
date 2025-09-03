@@ -1,4 +1,4 @@
-public class Cola<T> : Coleccionable
+public class Cola<T> : Coleccionable, Iterable
 {
     List<T> cola;
 
@@ -54,4 +54,6 @@ public class Cola<T> : Coleccionable
         }
         return (Comparable)min;
     }
+
+    public Iterador crearIterador() => new IteradorDeComparables(this);
 }

@@ -1,25 +1,21 @@
-public class Pila<T> : Coleccionable, Iterable
+public class Conjunto<T> : Coleccionable, Iterable
 {
-    List<T> pila;
+    List<T> conjunto;
 
-    public Pila()
+    public Conjunto()
     {
-        this.pila = new List<T>();
+        conjunto = new List<T>();
     }
 
-    // Métodos
-    public Comparable desapilar() => (Comparable)this.pila[this.pila.Count - 1];
+    public int cuantos() => this.conjunto.Count();
+    public void agregar(Comparable c) => conjunto.Add((T)c);
 
-    // Interface
-    public int cuantos() => this.pila.Count;
-
-    public void agregar(Comparable c) => pila.Add((T)c);
-
+    public bool pertenece(Comparable c) => contiene(c);
 
     public bool contiene(Comparable c)
     {
         bool flag = false;
-        foreach (T elem in this.pila)
+        foreach (T elem in this.conjunto)
         {
             if (((Comparable)elem).sosIgual(c))
             {
@@ -31,8 +27,8 @@ public class Pila<T> : Coleccionable, Iterable
 
     public Comparable maximo()
     {
-        T max = this.pila[0];
-        foreach (T elem in this.pila)
+        T max = this.conjunto[0];
+        foreach (T elem in this.conjunto)
         {
             if (((Comparable)elem).sosMayor((Comparable)max))
             {
@@ -44,8 +40,8 @@ public class Pila<T> : Coleccionable, Iterable
 
     public Comparable minimo()
     {
-        T min = this.pila[0];
-        foreach (T elem in this.pila)
+        T min = this.conjunto[0];
+        foreach (T elem in this.conjunto)
         {
             if (((Comparable)elem).sosMenor((Comparable)min))
             {
