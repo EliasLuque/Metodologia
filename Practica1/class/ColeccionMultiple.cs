@@ -24,6 +24,8 @@ public class ColeccionMultiple : Coleccionable
         return flag;
     }
 
+    public Iterador crearIterador() => new IteradorDeComparables(this);
+
     public int cuantos() => cola.cuantos() + pila.cuantos();
 
     public Comparable maximo()
@@ -48,5 +50,10 @@ public class ColeccionMultiple : Coleccionable
         {
             return pila.minimo();
         }
+    }
+
+    public Comparable obtener(int i)
+    {
+        throw new NotImplementedException();
     }
 }

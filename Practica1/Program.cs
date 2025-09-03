@@ -1,4 +1,6 @@
-﻿static void llenar(Coleccionable c)
+﻿using System.Security.Cryptography;
+
+static void llenar(Coleccionable c)
 {
     Random randNum = new Random();
     for (int i = 0; i < 20; i++)
@@ -49,17 +51,69 @@ static void llenarAlumnos(Coleccionable c)
         c.agregar(alumno);
     }
 }
+
+static void imprimirElementos(Coleccionable c)
+{
+    Iterador i = c.crearIterador();
+
+    while (!i.fin())
+    {
+        Console.WriteLine(((Alumno)i.actual()).ToString());
+        i.siguiente();
+    }
+}
+
+static void cambiarEstrategia(Coleccionable c, EstrategiaDeComparacion e)
+{
+    Iterador i = c.crearIterador();
+
+    while (!i.fin())
+    {
+        ((Alumno)i.actual()).cambiarEstrategia(e);
+        i.siguiente();
+    }
+}
+
 Pila<Comparable> pila = new Pila<Comparable>();
-Cola<Comparable> cola = new Cola<Comparable>();
-ColeccionMultiple multiple = new ColeccionMultiple(pila, cola);
+// Cola<Comparable> cola = new Cola<Comparable>();
+// Conjunto<Comparable> conjunto = new Conjunto<Comparable>();
+//ColeccionMultiple multiple = new ColeccionMultiple(pila, cola);
 
 llenarAlumnos(pila);
-llenarAlumnos(cola);
+// llenarAlumnos(cola);
+// llenarAlumnos(conjunto);
 
 // informar(pila);
 // Console.WriteLine();
 // informar(cola);
 // Console.WriteLine();
-informar(multiple);
+// informar(multiple);
+
+// Console.WriteLine("\nImprimiendo Pila");
+// imprimirElementos(pila);
+// Console.WriteLine("\nImprimiendo Cola");
+// imprimirElementos(cola);
+// Console.WriteLine("\nImprimiendo Conjunto");
+// imprimirElementos(conjunto);
+
+Console.WriteLine("Estrategia por Nombre: ");
+cambiarEstrategia(pila, new ComparacionPorNombre());
+informar(pila);
+Console.WriteLine();
+
+Console.WriteLine("Estrategia por Legajo: ");
+cambiarEstrategia(pila, new ComparacionPorLegajo());
+informar(pila);
+Console.WriteLine();
+
+Console.WriteLine("Estrategia por Promedio: ");
+cambiarEstrategia(pila, new ComparacionPorPromedio());
+informar(pila);
+Console.WriteLine();
+
+Console.WriteLine("Estrategia por DNI: ");
+cambiarEstrategia(pila, new ComparacionPorDni());
+informar(pila);
+Console.WriteLine();
 
 Console.ReadKey();

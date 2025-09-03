@@ -6,4 +6,5 @@ public interface Coleccionable
     public void agregar(Comparable c);
     public bool contiene(Comparable c);
     public Comparable obtener(int i);
+    public Iterador crearIterador();
 }

@@ -1,6 +1,6 @@
 public class IteradorDeComparables : Iterador
 {
-    int paginaActual;
+    int indice;
     Coleccionable coleccionable;
 
     public IteradorDeComparables(Coleccionable c)
@@ -8,11 +8,11 @@ public class IteradorDeComparables : Iterador
         this.coleccionable = c;
         primero();
     }
-    public Comparable actual() => coleccionable.obtener(paginaActual);
+    public Comparable actual() => coleccionable.obtener(indice);
 
-    public bool fin() => paginaActual >= coleccionable.cuantos();
+    public bool fin() => indice >= coleccionable.cuantos();
 
-    public void primero() => paginaActual = 0;
+    public void primero() => indice = 0;
 
-    public void siguiente() => this.paginaActual += 1;
+    public void siguiente() => this.indice += 1;
 }
