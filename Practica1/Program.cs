@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-
-static void llenar(Coleccionable c)
+﻿static void llenar(Coleccionable c)
 {
     Random randNum = new Random();
     for (int i = 0; i < 20; i++)
