@@ -31,20 +31,16 @@ static void informar(Coleccionable c)
 static void llenarAlumnos(Coleccionable c)
 {
     string[] nombres = ["Alejandro", "Mateo", "Diego", "Luis", "Juan", "Andrés", "Sebastián", "Carlos", "Tomás", "Gabriel", "Martín", "Bruno", "Nicolás", "Emiliano", "Rodrigo", "Santiago", "Miguel", "Daniel", "Joaquín", "Lucas", "Valentina", "Sofía", "Camila", "Isabella", "Mariana", "Ana", "Lucía", "Daniela", "Paula", "Julieta", "Martina", "Carla", "Gabriela", "Elena", "Sara", "Laura", "Ángela", "Renata", "Zoe", "Jimena", "Alex", "Sam", "Cris", "Dani", "Ariel", "Noa", "Isa", "Andy", "Robin", "Taylor"];
-    Random randNombre = new Random();
-    Random randDni = new Random();
-    Random randLegajo = new Random();
-    Random randPromedio = new Random();
+    Random randNum = new Random();
 
     for (int i = 0; i < 20; i++)
     {
-        string nombre = nombres[randNombre.Next(50)];
-        int dni = randDni.Next(10000000, 50000000);
-        int legajo = randLegajo.Next(10000);
-        double promedio = Math.Round(randPromedio.NextDouble() * 10, 2);
+        string nombre = nombres[randNum.Next(50)];
+        int dni = randNum.Next(10000000, 50000000);
+        int legajo = randNum.Next(10000);
+        double promedio = Math.Round(randNum.NextDouble() * 10, 2);
 
         Comparable alumno = new Alumno(nombre, dni, legajo, promedio);
-        // Ejercicio 2
         ((Alumno)alumno).cambiarEstrategia(new ComparacionPorNombre());
         c.agregar(alumno);
     }
@@ -113,5 +109,6 @@ Console.WriteLine("Estrategia por DNI: ");
 cambiarEstrategia(pila, new ComparacionPorDni());
 informar(pila);
 Console.WriteLine();
+
 
 Console.ReadKey();
