@@ -1,6 +1,6 @@
 public class ComparacionPorLegajo : EstrategiaDeComparacion
 {
-    public bool sosIgual(Alumno a1, Alumno a2) => a1.getLegajo() == a2.getLegajo();
-    public bool sosMenor(Alumno a1, Alumno a2) => a1.getLegajo() < a2.getLegajo();
-    public bool sosMayor(Alumno a1, Alumno a2) => a1.getLegajo() > a2.getLegajo();
+    public bool sosIgual(Comparable a1, Comparable a2) => ((Alumno)a1).getLegajo() == ((Alumno)a2).getLegajo();
+    public bool sosMenor(Comparable a1, Comparable a2) => ((Alumno)a1).getLegajo() < ((Alumno)a2).getLegajo();
+    public bool sosMayor(Comparable a1, Comparable a2) => ((Alumno)a1).getLegajo() > ((Alumno)a2).getLegajo();
 }
