@@ -9,7 +9,7 @@ public class Alumno : Persona
     {
         this.legajo = l;
         this.promedio = p;
-        this.estrategia = new ComparacionPorPromedio();
+        this.estrategia = new ComparacionPorDni();
     }
 
     public int getLegajo() => this.legajo;

@@ -2,10 +2,10 @@ public abstract class Persona : Comparable
 {
     private string nombre;
     private int dni;
-    public Persona(string n, int d)
+    public Persona(string nombre, int dni)
     {
-        this.nombre = n;
-        this.dni = d;
+        this.nombre = nombre;
+        this.dni = dni;
     }
 
     public string getNombre() => this.nombre;

@@ -16,4 +16,6 @@ public class Numero : Comparable
     public bool sosIgual(Comparable c) => this.valor == ((Numero)c).getValor();
     public bool sosMenor(Comparable c) => this.valor < ((Numero)c).getValor();
     public bool sosMayor(Comparable c) => this.valor > ((Numero)c).getValor();
+
+    public override string ToString() => this.valor.ToString();
 }
