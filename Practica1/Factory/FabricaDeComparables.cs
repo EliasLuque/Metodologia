@@ -2,12 +2,13 @@ public abstract class FabricaDeComparables
 {
     public const int ALUMNO = 1;
     public const int NUMERO = 2;
+    public const int PROFESOR = 3;
 
     public abstract Comparable crearAleatorio();
     public static Comparable crearAleatorio(int opcion)
     {
         FabricaDeComparables fabrica = null;
-        
+
         switch (opcion)
         {
             case ALUMNO:
@@ -15,6 +16,9 @@ public abstract class FabricaDeComparables
                 break;
             case NUMERO:
                 fabrica = new FabricaDeNumeros();
+                break;
+            case PROFESOR:
+                fabrica = new FabricaDeProfesores();
                 break;
         }
         return fabrica.crearAleatorio();
@@ -32,6 +36,9 @@ public abstract class FabricaDeComparables
                 break;
             case NUMERO:
                 fabrica = new FabricaDeNumeros();
+                break;
+            case PROFESOR:
+                fabrica = new FabricaDeProfesores();
                 break;
         }
         return fabrica.crearPorTeclado();

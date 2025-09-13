@@ -47,13 +47,13 @@ static void cambiarEstrategia(Coleccionable c, EstrategiaDeComparacion e)
     }
 }
 
+const int ALUMNO = 1;
+const int NUMERO = 2;
+const int PROFESOR = 3;
+
 Pila<Comparable> pila = new Pila<Comparable>();
-Cola<Comparable> cola = new Cola<Comparable>();
 
-llenar(pila, 1);
-informar(pila, 1);
-
-llenar(cola, 2);
-informar(cola, 2);
+llenar(pila, PROFESOR);
+informar(pila, PROFESOR);
 
 Console.ReadKey();

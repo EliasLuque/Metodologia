@@ -22,4 +22,24 @@ public class Alumno : Persona
 
     public override bool sosMenor(Comparable c) => this.estrategia.sosMenor(this, (Alumno)c);
     public override string ToString() => $"Nombre: {base.getNombre()}, DNI: {base.getDni()}, Legajo: {this.legajo}, Promedio: {this.promedio}";
+
+    public void prestarAtencion() => Console.WriteLine("Prestando atención");
+    public void distraerse()
+    {
+        GeneradorDeDatosAleatorios generador = new GeneradorDeDatosAleatorios();
+        switch (generador.numeroAleatorio(2))
+        {
+            case 0:
+                Console.WriteLine("Mirando el celular");
+                break;
+                
+            case 1:
+                Console.WriteLine("Dibujando en el margen de la carpeta");
+                break;
+            
+            case 2:
+                Console.WriteLine("Tirando aviones de papel");
+                break;
+        }
+    }
 }
