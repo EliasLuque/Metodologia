@@ -1,6 +1,5 @@
 ﻿static void llenar(Coleccionable coleccionable, int opcion)
 {
-    Random randNum = new Random();
     for (int i = 0; i < 20; i++)
     {
         Comparable comparable = FabricaDeComparables.crearAleatorio(opcion);
@@ -39,7 +38,6 @@ static void imprimirElementos(Coleccionable c)
 static void cambiarEstrategia(Coleccionable c, EstrategiaDeComparacion e)
 {
     Iterador i = c.crearIterador();
-
     while (!i.fin())
     {
         ((Alumno)i.actual()).cambiarEstrategia(e);
@@ -47,13 +45,30 @@ static void cambiarEstrategia(Coleccionable c, EstrategiaDeComparacion e)
     }
 }
 
+static void dictadoDeClases(Profesor profesor)
+{
+    for (int i = 0; i < 5; i++)
+    {
+        profesor.hablarALaClase();
+        profesor.escribirEnElPizarron();
+    }
+}
+
+Pila<Comparable> pila = new Pila<Comparable>();
+
 const int ALUMNO = 1;
 const int NUMERO = 2;
 const int PROFESOR = 3;
 
-Pila<Comparable> pila = new Pila<Comparable>();
+Profesor profesor = (Profesor)FabricaDeComparables.crearAleatorio(PROFESOR);
 
-llenar(pila, PROFESOR);
-informar(pila, PROFESOR);
+llenar(pila, ALUMNO);
+while(pila.cuantos() != 0)
+{
+    Alumno alumno = (Alumno)pila.desapilar();
+    profesor.agregarObservador(alumno);
+}
+
+dictadoDeClases(profesor);
 
 Console.ReadKey();

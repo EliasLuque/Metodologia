@@ -1,4 +1,4 @@
-public class Alumno : Persona
+public class Alumno : Persona, IObservador
 {
     private int legajo;
     private double promedio;
@@ -12,22 +12,24 @@ public class Alumno : Persona
         this.estrategia = new ComparacionPorDni();
     }
 
+    // Métodos
     public int getLegajo() => this.legajo;
     public double getPromedio() => this.promedio;
     public void cambiarEstrategia(EstrategiaDeComparacion e) => this.estrategia = e;
 
+    // Interface Comparable
     public override bool sosIgual(Comparable c) => this.estrategia.sosIgual(this, (Alumno)c);
 
     public override bool sosMayor(Comparable c) => this.estrategia.sosMayor(this, (Alumno)c);
 
     public override bool sosMenor(Comparable c) => this.estrategia.sosMenor(this, (Alumno)c);
-    public override string ToString() => $"Nombre: {base.getNombre()}, DNI: {base.getDni()}, Legajo: {this.legajo}, Promedio: {this.promedio}";
 
+    // Interface Obervador
     public void prestarAtencion() => Console.WriteLine("Prestando atención");
     public void distraerse()
     {
         GeneradorDeDatosAleatorios generador = new GeneradorDeDatosAleatorios();
-        switch (generador.numeroAleatorio(2))
+        switch (generador.numeroAleatorio(3))
         {
             case 0:
                 Console.WriteLine("Mirando el celular");
@@ -42,4 +44,18 @@ public class Alumno : Persona
                 break;
         }
     }
+
+    public void actualizar(IObservado observado)
+    {
+        if (((Profesor)observado).getHablando())
+        {
+            this.prestarAtencion();
+        }
+        else
+        {
+            this.distraerse();
+        }
+    }
+    
+    public override string ToString() => $"Nombre: {base.getNombre()}, DNI: {base.getDni()}, Legajo: {this.legajo}, Promedio: {this.promedio}";
 }
