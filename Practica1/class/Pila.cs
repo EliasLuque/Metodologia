@@ -8,7 +8,12 @@ public class Pila<T> : Coleccionable, Iterable
     }
 
     // Métodos
-    public Comparable desapilar() => (Comparable)this.pila[this.pila.Count - 1];
+    public T desapilar()
+    {
+        T tope = this.pila[this.pila.Count() - 1];
+        this.pila.RemoveAt(this.pila.Count() - 1);
+        return tope;
+    }
 
     // Interface
     public int cuantos() => this.pila.Count;

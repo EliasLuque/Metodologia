@@ -8,7 +8,12 @@ public class Cola<T> : Coleccionable, Iterable
     }
 
     // Métodos
-    public Comparable desencolar() => (Comparable)this.cola[0];
+    public T desencolar()
+    {
+        T tope = this.cola[0];
+        this.cola.RemoveAt(0);
+        return tope;
+    }
 
     // Interface
     public int cuantos() => this.cola.Count;
