@@ -1,4 +1,6 @@
-﻿static void llenar(Coleccionable coleccionable, int opcion)
+﻿using MetodologíasDeProgramaciónI;
+
+static void llenar(Coleccionable coleccionable, int opcion)
 {
     for (int i = 0; i < 20; i++)
     {
@@ -54,21 +56,29 @@ static void dictadoDeClases(Profesor profesor)
     }
 }
 
-Pila<Comparable> pila = new Pila<Comparable>();
-
 const int ALUMNO = 1;
 const int NUMERO = 2;
 const int PROFESOR = 3;
+const int ALUMNOMUYESTUDIOSO = 4;
 
-Profesor profesor = (Profesor)FabricaDeComparables.crearAleatorio(PROFESOR);
+Teacher teacher = new Teacher();
 
-llenar(pila, ALUMNO);
-while(pila.cuantos() != 0)
+for (int i = 0; i < 20; i++)
 {
-    Alumno alumno = (Alumno)pila.desapilar();
-    profesor.agregarObservador(alumno);
+    if (i < 10)
+    {
+        Alumno alumno = (Alumno)FabricaDeComparables.crearAleatorio(ALUMNO);
+        AlumnoAdapter adapter = new AlumnoAdapter(alumno);
+        teacher.goToClass(adapter);
+    }
+    else
+    {
+        AlumnoMuyEstudioso alumno = (AlumnoMuyEstudioso)FabricaDeComparables.crearAleatorio(ALUMNOMUYESTUDIOSO);
+        AlumnoAdapter adapter = new AlumnoAdapter(alumno);
+        teacher.goToClass(adapter);
+    }
 }
 
-dictadoDeClases(profesor);
+teacher.teachingAClass();
 
 Console.ReadKey();

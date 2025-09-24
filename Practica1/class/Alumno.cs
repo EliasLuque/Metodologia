@@ -1,9 +1,11 @@
-public class Alumno : Persona, IObservador
+using MetodologíasDeProgramaciónI;
+
+public class Alumno : Persona, IObservador, IAlumno
 {
     private int legajo;
     private double promedio;
     private EstrategiaDeComparacion estrategia;
-    private double calificaion;
+    private int calificaion;
 
     public Alumno(string n, int d, int l, double p) :
     base(n, d)
@@ -17,10 +19,10 @@ public class Alumno : Persona, IObservador
     public int getLegajo() => this.legajo;
     public double getPromedio() => this.promedio;
     public void cambiarEstrategia(EstrategiaDeComparacion e) => this.estrategia = e;
-    public double getCalificacion() => this.calificaion;
-    public void setCalificacion(double cal) => this.calificaion = cal;
+    public int getCalificacion() => this.calificaion;
+    public void setCalificacion(int cal) => this.calificaion = cal;
     public virtual int responderPregunta(int pregunta) => new GeneradorDeDatosAleatorios().numeroAleatorio(3) + 1;
-    public string mostrarCalificacion() => $"{this.getNombre}\t{this.calificaion}";
+    public string mostrarCalificacion() => $"{this.getNombre()}\t{this.calificaion}";
 
     // Interface Comparable
     public override bool sosIgual(Comparable c) => this.estrategia.sosIgual(this, (Alumno)c);

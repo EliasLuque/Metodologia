@@ -4,8 +4,5 @@ public class AlumnoMuyEstudioso : Alumno
     base(n, d, l, p)
     { }
 
-    public override int responderPregunta(int pregunta)
-    {
-        return base.responderPregunta(pregunta);
-    }
+    public override int responderPregunta(int pregunta) => pregunta % 3;
 }
