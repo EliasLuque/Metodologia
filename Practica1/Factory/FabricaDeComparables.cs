@@ -4,6 +4,8 @@ public abstract class FabricaDeComparables
     public const int NUMERO = 2;
     public const int PROFESOR = 3;
     public const int ALUMNOMUYESTUDIOSO = 4;
+    protected GeneradorDeDatosAleatorios generador = new GeneradorDeDatosAleatorios();
+    protected LectorDeDatos lector = new LectorDeDatos();
 
     public abstract Comparable crearAleatorio();
     public static Comparable crearAleatorio(int opcion)

@@ -2,8 +2,6 @@ public class FabricaDeAlumnos : FabricaDeComparables
 {
     public override Comparable crearAleatorio()
     {
-        GeneradorDeDatosAleatorios generador = new GeneradorDeDatosAleatorios();
-
         string n = generador.stringAleatorio(5);
         int d = generador.numeroAleatorio(10000000);
         int l = generador.numeroAleatorio(5000);
@@ -13,9 +11,8 @@ public class FabricaDeAlumnos : FabricaDeComparables
 
     public override Comparable crearPorTeclado()
     {
-        LectorDeDatos lector = new LectorDeDatos();
         Console.WriteLine("Ingrese los siguientes datos");
-       
+
         Console.Write("Nombre: ");
         string n = lector.stringPorTeclado();
 
@@ -27,7 +24,6 @@ public class FabricaDeAlumnos : FabricaDeComparables
 
         Console.Write("Promedio: ");
         double p = lector.numeroPorTeclado();
-
         return new Alumno(n, d, l, p);
     }
 }
