@@ -7,17 +7,21 @@ abstract public class AlumnoDecorator : IAlumno
         this.alumno = alumno;
     }
 
-    public string getNombre() => alumno.getNombre();
+    public int getCalificacion() => alumno.getCalificacion();
 
-    public string mostrarCalificacion() => alumno.mostrarCalificacion();
+    public int getLegajo() => alumno.getLegajo();
 
-    public int responderPregunta(int pregunta) => alumno.responderPregunta(pregunta);
+    virtual public string getNombre() => alumno.getNombre();
 
-    public void setCalificacion(int cal) => alumno.setCalificacion(cal);
+    virtual public string mostrarCalificacion() => alumno.mostrarCalificacion();
 
-    public bool sosIgual(Comparable c) => alumno.sosIgual(c);
+    virtual public int responderPregunta(int pregunta) => alumno.responderPregunta(pregunta);
 
-    public bool sosMayor(Comparable c) => alumno.sosMayor(c);
+    virtual public void setCalificacion(int cal) => alumno.setCalificacion(cal);
 
-    public bool sosMenor(Comparable c) => alumno.sosMenor(c);
+    virtual public bool sosIgual(Comparable c) => alumno.sosIgual(c);
+
+    virtual public bool sosMayor(Comparable c) => alumno.sosMayor(c);
+
+    virtual public bool sosMenor(Comparable c) => alumno.sosMenor(c);
 }

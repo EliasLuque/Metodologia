@@ -21,7 +21,7 @@ public class Alumno : Persona, IObservador, IAlumno
     public void cambiarEstrategia(EstrategiaDeComparacion e) => this.estrategia = e;
     public int getCalificacion() => this.calificaion;
     public void setCalificacion(int cal) => this.calificaion = cal;
-    public virtual int responderPregunta(int pregunta) => new GeneradorDeDatosAleatorios().numeroAleatorio(3) + 1;
+    public virtual int responderPregunta(int pregunta) => new GeneradorDeDatosAleatorios().numeroAleatorio(3);
     public string mostrarCalificacion() => $"{this.getNombre()}\t{this.calificaion}";
 
     // Interface Comparable

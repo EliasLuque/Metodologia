@@ -3,8 +3,8 @@ using MetodologíasDeProgramaciónI;
 
 public class AlumnoAdapter : Student
 {
-    Alumno alumno;
-    public AlumnoAdapter(Alumno alumno)
+    IAlumno alumno;
+    public AlumnoAdapter(IAlumno alumno)
     {
         this.alumno = alumno;
     }
