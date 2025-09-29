@@ -15,7 +15,7 @@ public class DecoradoConPromocion : AlumnoDecorator
         {
             texto.Replace($"\t{cal}", $"\t{cal} (DESAPROBADO)");
         }
-        else if (cal > 4 && cal < 7)
+        else if (cal >= 4 && cal < 7)
         {
             texto.Replace($"\t{cal}", $"\t{cal} (APROBADO)");
         }
