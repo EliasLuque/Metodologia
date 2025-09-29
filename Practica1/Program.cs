@@ -68,13 +68,21 @@ for (int i = 0; i < 20; i++)
     if (i < 10)
     {
         Alumno alumno = (Alumno)FabricaDeComparables.crearAleatorio(ALUMNO);
-        AlumnoAdapter adapter = new AlumnoAdapter(alumno);
+        AlumnoDecorator alumnoDecorado = new DecoradoConLegajo(alumno);
+        alumnoDecorado = new DecoradoConPromocion(alumnoDecorado);
+        alumnoDecorado = new DecoradoConLetras(alumnoDecorado);
+        alumnoDecorado = new DecoradoConAsteriscos(alumnoDecorado);
+        AlumnoAdapter adapter = new AlumnoAdapter(alumnoDecorado);
         teacher.goToClass(adapter);
     }
     else
     {
         AlumnoMuyEstudioso alumno = (AlumnoMuyEstudioso)FabricaDeComparables.crearAleatorio(ALUMNOMUYESTUDIOSO);
-        AlumnoAdapter adapter = new AlumnoAdapter(alumno);
+        AlumnoDecorator alumnoDecorado = new DecoradoConLegajo(alumno);
+        alumnoDecorado = new DecoradoConPromocion(alumnoDecorado);
+        alumnoDecorado = new DecoradoConLetras(alumnoDecorado);
+        alumnoDecorado = new DecoradoConAsteriscos(alumnoDecorado);
+        AlumnoAdapter adapter = new AlumnoAdapter(alumnoDecorado);
         teacher.goToClass(adapter);
     }
 }
