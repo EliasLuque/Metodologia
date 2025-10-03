@@ -1,6 +1,9 @@
-public class Pila<T> : Coleccionable, Iterable
+public class Pila<T> : Coleccionable, Iterable, Ordenable
 {
-    List<T> pila;
+    private List<T> pila;
+    private OrdenEnAula1? ordenInicio;
+    private OrdenEnAula1? ordenAulaLlena;
+    private OrdenEnAula2? ordenLlegaAlumno;
 
     public Pila()
     {
@@ -17,7 +20,20 @@ public class Pila<T> : Coleccionable, Iterable
     // Interface
     public int cuantos() => this.pila.Count();
 
-    public void agregar(Comparable c) => pila.Add((T)c);
+    public void agregar(Comparable c)
+    {
+        pila.Add((T)c);
+
+        int cuantos = this.cuantos();
+        if (cuantos == 1) { ordenInicio.ejecutar(); }
+
+        ordenLlegaAlumno.ejecutar(c);
+
+        if (cuantos == 40)
+        {
+            ordenAulaLlena.ejecutar();
+        }
+    }
 
     public Comparable obtener(int i) => (Comparable)this.pila[i];
 
@@ -60,4 +76,10 @@ public class Pila<T> : Coleccionable, Iterable
         return (Comparable)min;
     }
     public Iterador crearIterador() => new IteradorDeComparables(this);
+
+    public void setOrdenInicio(OrdenEnAula1 orden) => this.ordenInicio = orden;
+
+    public void setOrdenLlegaAlumno(OrdenEnAula2 orden) => this.ordenLlegaAlumno = orden;
+
+    public void setOrdenAulaLlena(OrdenEnAula1 orden) => this.ordenAulaLlena = orden;
 }

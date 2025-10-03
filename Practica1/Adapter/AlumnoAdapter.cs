@@ -1,4 +1,3 @@
-using System.Data.Common;
 using MetodologíasDeProgramaciónI;
 
 public class AlumnoAdapter : Student

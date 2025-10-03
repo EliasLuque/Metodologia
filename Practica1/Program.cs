@@ -1,6 +1,4 @@
-﻿using MetodologíasDeProgramaciónI;
-
-static void llenar(Coleccionable coleccionable, int opcion)
+﻿static void llenar(Coleccionable coleccionable, int opcion)
 {
     for (int i = 0; i < 20; i++)
     {
@@ -61,32 +59,14 @@ const int NUMERO = 2;
 const int PROFESOR = 3;
 const int ALUMNOMUYESTUDIOSO = 4;
 
-Teacher teacher = new Teacher();
+Pila<Comparable> pila = new Pila<Comparable>();
+Aula aula = new Aula();
+pila.setOrdenInicio(new OrdenInicio(aula));
+pila.setOrdenLlegaAlumno(new OrdenLlegaAlumno(aula));
+pila.setOrdenAulaLlena(new OrdenAulaLlena(aula));
 
-for (int i = 0; i < 20; i++)
-{
-    if (i < 10)
-    {
-        Alumno alumno = (Alumno)FabricaDeComparables.crearAleatorio(ALUMNO);
-        AlumnoDecorator alumnoDecorado = new DecoradoConLegajo(alumno);
-        alumnoDecorado = new DecoradoConPromocion(alumnoDecorado);
-        alumnoDecorado = new DecoradoConLetras(alumnoDecorado);
-        alumnoDecorado = new DecoradoConAsteriscos(alumnoDecorado);
-        AlumnoAdapter adapter = new AlumnoAdapter(alumnoDecorado);
-        teacher.goToClass(adapter);
-    }
-    else
-    {
-        AlumnoMuyEstudioso alumno = (AlumnoMuyEstudioso)FabricaDeComparables.crearAleatorio(ALUMNOMUYESTUDIOSO);
-        AlumnoDecorator alumnoDecorado = new DecoradoConLegajo(alumno);
-        alumnoDecorado = new DecoradoConPromocion(alumnoDecorado);
-        alumnoDecorado = new DecoradoConLetras(alumnoDecorado);
-        alumnoDecorado = new DecoradoConAsteriscos(alumnoDecorado);
-        AlumnoAdapter adapter = new AlumnoAdapter(alumnoDecorado);
-        teacher.goToClass(adapter);
-    }
-}
+llenar(pila, ALUMNO);
+llenar(pila, ALUMNOMUYESTUDIOSO);
 
-teacher.teachingAClass();
 
 Console.ReadKey();
