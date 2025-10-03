@@ -8,12 +8,10 @@ public abstract class Persona : Comparable
         this.dni = dni;
     }
 
+    public void setNombre(string nombre) => this.nombre = nombre; 
     public string getNombre() => this.nombre;
     public int getDni() => this.dni;
-
     public abstract bool sosIgual(Comparable c);
-
     public abstract bool sosMenor(Comparable c);
-
     public abstract bool sosMayor(Comparable c);
 }

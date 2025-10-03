@@ -1,7 +1,9 @@
-public class Cola<T> : Coleccionable, Iterable
+public class Cola<T> : Coleccionable, Iterable, Ordenable
 {
-    List<T> cola;
-
+    private List<T> cola;
+    private OrdenEnAula1? ordenInicio;
+    private OrdenEnAula1? ordenAulaLlena;
+    private OrdenEnAula2? ordenLlegaAlumno;
     public Cola()
     {
         this.cola = new List<T>();
@@ -18,7 +20,20 @@ public class Cola<T> : Coleccionable, Iterable
     // Interface
     public int cuantos() => this.cola.Count();
 
-    public void agregar(Comparable c) => cola.Add((T)c);
+    public void agregar(Comparable c)
+    {
+        cola.Add((T)c);
+        
+        int cuantos = this.cuantos();
+        if (cuantos == 1) { ordenInicio.ejecutar(); }
+
+        ordenLlegaAlumno.ejecutar(c);
+
+        if (cuantos == 40)
+        {
+            ordenAulaLlena.ejecutar();
+        }
+    }
 
     public Comparable obtener(int i) => (Comparable)this.cola[i];
     public bool contiene(Comparable c)
@@ -61,4 +76,11 @@ public class Cola<T> : Coleccionable, Iterable
     }
 
     public Iterador crearIterador() => new IteradorDeComparables(this);
+
+
+    public void setOrdenInicio(OrdenEnAula1 orden) => this.ordenInicio = orden;
+
+    public void setOrdenLlegaAlumno(OrdenEnAula2 orden) => this.ordenLlegaAlumno = orden;
+
+    public void setOrdenAulaLlena(OrdenEnAula1 orden) => this.ordenAulaLlena = orden;
 }
