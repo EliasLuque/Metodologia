@@ -5,6 +5,7 @@ public abstract class FabricaDeComparables
     private const int PROFESOR = 3;
     private const int ALUMNOMUYESTUDIOSO = 4;
     private const int ALUMNOCOMPUESTO = 5;
+    private const int JUGADOR = 6;
     protected GeneradorDeDatosAleatorios generador = new GeneradorDeDatosAleatorios();
     protected LectorDeDatos lector = new LectorDeDatos();
 
@@ -29,6 +30,9 @@ public abstract class FabricaDeComparables
                 break;
             case ALUMNOCOMPUESTO:
                 fabrica = new FabricaDeAlumnosCompuestos();
+                break;
+            case JUGADOR:
+                fabrica = new FabricaDeJugadores();
                 break;
         }
         return fabrica.crearAleatorio();
@@ -55,6 +59,9 @@ public abstract class FabricaDeComparables
                 break;
             case ALUMNOCOMPUESTO:
                 fabrica = new FabricaDeAlumnosCompuestos();
+                break;
+            case JUGADOR:
+                fabrica = new FabricaDeJugadores();
                 break;
         }
         return fabrica.crearPorTeclado();
