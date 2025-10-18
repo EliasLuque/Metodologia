@@ -1,9 +1,11 @@
 public abstract class FabricaDeComparables
 {
-    public const int ALUMNO = 1;
-    public const int NUMERO = 2;
-    public const int PROFESOR = 3;
-    public const int ALUMNOMUYESTUDIOSO = 4;
+    private const int ALUMNO = 1;
+    private const int NUMERO = 2;
+    private const int PROFESOR = 3;
+    private const int ALUMNOMUYESTUDIOSO = 4;
+    private const int ALUMNOCOMPUESTO = 5;
+    private const int JUGADOR = 6;
     protected GeneradorDeDatosAleatorios generador = new GeneradorDeDatosAleatorios();
     protected LectorDeDatos lector = new LectorDeDatos();
 
@@ -25,7 +27,13 @@ public abstract class FabricaDeComparables
                 break;
             case ALUMNOMUYESTUDIOSO:
                 fabrica = new FabricaDeAlumnosMuyEstudiosos();
-                break; 
+                break;
+            case ALUMNOCOMPUESTO:
+                fabrica = new FabricaDeAlumnosCompuestos();
+                break;
+            case JUGADOR:
+                fabrica = new FabricaDeJugadores();
+                break;
         }
         return fabrica.crearAleatorio();
     }
@@ -48,7 +56,13 @@ public abstract class FabricaDeComparables
                 break;
             case ALUMNOMUYESTUDIOSO:
                 fabrica = new FabricaDeAlumnosMuyEstudiosos();
-                break; 
+                break;
+            case ALUMNOCOMPUESTO:
+                fabrica = new FabricaDeAlumnosCompuestos();
+                break;
+            case JUGADOR:
+                fabrica = new FabricaDeJugadores();
+                break;
         }
         return fabrica.crearPorTeclado();
     }

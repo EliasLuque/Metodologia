@@ -1,4 +1,6 @@
-﻿static void llenar(Coleccionable coleccionable, int opcion)
+﻿using MetodologíasDeProgramaciónI;
+
+static void llenar(Coleccionable coleccionable, int opcion)
 {
     for (int i = 0; i < 20; i++)
     {
@@ -58,15 +60,29 @@ const int ALUMNO = 1;
 const int NUMERO = 2;
 const int PROFESOR = 3;
 const int ALUMNOMUYESTUDIOSO = 4;
+const int ALUMNOCOMPUESTO = 5;
+const int JUGADOR = 6;
 
-Pila<Comparable> pila = new Pila<Comparable>();
-Aula aula = new Aula();
-pila.setOrdenInicio(new OrdenInicio(aula));
-pila.setOrdenLlegaAlumno(new OrdenLlegaAlumno(aula));
-pila.setOrdenAulaLlena(new OrdenAulaLlena(aula));
+// Pila<Comparable> pila = new Pila<Comparable>();
+// Aula aula = new Aula();
+// pila.setOrdenInicio(new OrdenInicio(aula));
+// pila.setOrdenLlegaAlumno(new OrdenLlegaAlumno(aula));
+// pila.setOrdenAulaLlena(new OrdenAulaLlena(aula));
 
-llenar(pila, ALUMNO);
-llenar(pila, ALUMNOMUYESTUDIOSO);
+// llenar(pila, ALUMNO);
+// llenar(pila, ALUMNOMUYESTUDIOSO);
+
+// Teacher teacher = new Teacher();
+// AlumnoCompuesto alumnoCompuesto = (AlumnoCompuesto)FabricaDeComparables.crearAleatorio(ALUMNOCOMPUESTO);
+// AlumnoAdapter alumnoAdapter = new AlumnoAdapter(alumnoCompuesto);
+// teacher.goToClass(alumnoAdapter);
+// teacher.teachingAClass();
+
+Jugador j1 = (Jugador)FabricaDeComparables.crearAleatorio(JUGADOR);
+Jugador j2 = (Jugador)FabricaDeComparables.crearAleatorio(JUGADOR);
+
+JuegoCartas juego = new Truco(j1,j2);
+juego.jugar();
 
 
 Console.ReadKey();
