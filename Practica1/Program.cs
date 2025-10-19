@@ -1,4 +1,5 @@
 ﻿using MetodologíasDeProgramaciónI;
+using ObtencionDeDatos;
 
 static void llenar(Coleccionable coleccionable, int opcion)
 {
@@ -63,26 +64,38 @@ const int ALUMNOMUYESTUDIOSO = 4;
 const int ALUMNOCOMPUESTO = 5;
 const int JUGADOR = 6;
 
-// Pila<Comparable> pila = new Pila<Comparable>();
-// Aula aula = new Aula();
-// pila.setOrdenInicio(new OrdenInicio(aula));
-// pila.setOrdenLlegaAlumno(new OrdenLlegaAlumno(aula));
-// pila.setOrdenAulaLlena(new OrdenAulaLlena(aula));
+Manejador manejador = new LectorDeDatos(null);
+manejador = new GeneradorDeDatosAleatorios(manejador);
+manejador = new LectorDeArchivos(manejador);
+FabricaDeComparables.setManejador(manejador);
 
-// llenar(pila, ALUMNO);
-// llenar(pila, ALUMNOMUYESTUDIOSO);
+// Jugador j1 = (Jugador)FabricaDeComparables.crearAleatorio(JUGADOR);
+// Jugador j2 = (Jugador)FabricaDeComparables.crearAleatorio(JUGADOR);
 
-// Teacher teacher = new Teacher();
-// AlumnoCompuesto alumnoCompuesto = (AlumnoCompuesto)FabricaDeComparables.crearAleatorio(ALUMNOCOMPUESTO);
-// AlumnoAdapter alumnoAdapter = new AlumnoAdapter(alumnoCompuesto);
-// teacher.goToClass(alumnoAdapter);
-// teacher.teachingAClass();
+// JuegoCartas juego = new Truco(j1,j2);
+// juego.jugar();
 
-Jugador j1 = (Jugador)FabricaDeComparables.crearAleatorio(JUGADOR);
-Jugador j2 = (Jugador)FabricaDeComparables.crearAleatorio(JUGADOR);
+Teacher teacher = new Teacher();
+AlumnoAdapter adapter;
+// creando Alumno aleatoriamente
+for(int i = 0; i < 5; i++)
+{
+    Alumno alumno = (Alumno)FabricaDeComparables.crearAleatorio(ALUMNO);
+    adapter = new AlumnoAdapter(alumno);
+    teacher.goToClass(adapter);
+}
+// creando AlumnoMuyEstudioso por teclado
+for (int i = 0; i < 2; i++)
+{
+    AlumnoMuyEstudioso alumnoMuyEstudioso = (AlumnoMuyEstudioso)FabricaDeComparables.crearPorTeclado(ALUMNOMUYESTUDIOSO);
+    adapter = new AlumnoAdapter(alumnoMuyEstudioso);
+    teacher.goToClass(adapter);
+}
+// creando AlumnoCompuesto por archivo
+AlumnoCompuesto alumnoCompuesto = (AlumnoCompuesto)FabricaDeComparables.crearAleatorio(ALUMNOCOMPUESTO);
+adapter = new AlumnoAdapter(alumnoCompuesto);
+teacher.goToClass(adapter);
 
-JuegoCartas juego = new Truco(j1,j2);
-juego.jugar();
-
+teacher.teachingAClass();
 
 Console.ReadKey();

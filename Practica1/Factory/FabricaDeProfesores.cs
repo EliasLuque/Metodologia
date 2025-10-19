@@ -2,9 +2,17 @@ public class FabricaDeProfesores : FabricaDeComparables
 {
     public override Comparable crearAleatorio()
     {
-        string n = generador.stringAleatorio(5);
-        int d = generador.numeroAleatorio(10000000);
-        int a = generador.numeroAleatorio(10);
+        string n = obtencionDeDatos.stringAleatorio(5);
+        int d = obtencionDeDatos.numeroAleatorio(10000000);
+        int a = obtencionDeDatos.numeroAleatorio(10);
+        return new Profesor(n, d, a);
+    }
+
+    public override Comparable crearPorArchivo()
+    {
+        string n = obtencionDeDatos.stringDesdeArchivo(5);
+        int d = (int)obtencionDeDatos.numeroDesdeArchivo(10000000);
+        int a = (int)obtencionDeDatos.numeroDesdeArchivo(10);
         return new Profesor(n, d, a);
     }
 
@@ -13,13 +21,13 @@ public class FabricaDeProfesores : FabricaDeComparables
         Console.WriteLine("Ingrese los siguientes datos");
        
         Console.Write("Nombre: ");
-        string n = lector.stringPorTeclado();
+        string n = obtencionDeDatos.stringPorTeclado();
 
         Console.Write("DNI: ");
-        int d = lector.numeroPorTeclado();
+        int d = obtencionDeDatos.numeroPorTeclado();
 
         Console.Write("Antigüedad: ");
-        int a = lector.numeroPorTeclado();
+        int a = obtencionDeDatos.numeroPorTeclado();
 
         return new Profesor(n, d, a);
     }

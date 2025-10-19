@@ -1,5 +1,8 @@
-public class LectorDeDatos
+public class LectorDeDatos: Manejador
 {
-    public int numeroPorTeclado() => int.Parse(Console.ReadLine());
-    public string stringPorTeclado() => Console.ReadLine();
+    public LectorDeDatos(Manejador sucesor) : base(sucesor)
+    { }
+
+    override public int numeroPorTeclado() => int.Parse(Console.ReadLine());
+    override public string stringPorTeclado() => Console.ReadLine();
 }

@@ -1,16 +1,16 @@
 using System.Text;
 
-public class GeneradorDeDatosAleatorios
+public class GeneradorDeDatosAleatorios: Manejador
 {
     Random random;
 
-    public GeneradorDeDatosAleatorios()
+    public GeneradorDeDatosAleatorios(Manejador sucesor) : base(sucesor)
     {
         random = new Random();
     }
-    public int numeroAleatorio(int maximo) => random.Next(maximo);
+    override public int numeroAleatorio(int maximo) => random.Next(maximo);
 
-    public string stringAleatorio(int cantidad)
+    override public string stringAleatorio(int cantidad)
     {
         StringBuilder constructor = new StringBuilder();
         const string abecedario = "abcdefghijklmnñopqrstuvwxyz";

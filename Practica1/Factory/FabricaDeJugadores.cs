@@ -2,8 +2,15 @@ public class FabricaDeJugadores : FabricaDeComparables
 {
     public override Comparable crearAleatorio()
     {
-        string n = generador.stringAleatorio(5);
-        int d = generador.numeroAleatorio(10000000);
+        string n = obtencionDeDatos.stringAleatorio(5);
+        int d = obtencionDeDatos.numeroAleatorio(10000000);
+        return new Jugador(n, d);
+    }
+
+    public override Comparable crearPorArchivo()
+    {
+        string n = obtencionDeDatos.stringDesdeArchivo(5);
+        int d = (int)obtencionDeDatos.numeroDesdeArchivo(10000000);
         return new Jugador(n, d);
     }
 
@@ -11,9 +18,9 @@ public class FabricaDeJugadores : FabricaDeComparables
     {
         Console.WriteLine("Ingrese los siguientes datos");
         Console.Write("Nombre: ");
-        string n = lector.stringPorTeclado();
+        string n = obtencionDeDatos.stringPorTeclado();
         Console.Write("DNI: ");
-        int d = lector.numeroPorTeclado();
+        int d = obtencionDeDatos.numeroPorTeclado();
         return new Jugador(n, d);
     }
 }

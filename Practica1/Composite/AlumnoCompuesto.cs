@@ -15,7 +15,7 @@ public class AlumnoCompuesto : IAlumno, Comparable
         string nombres = "";
         foreach (IAlumno hijo in this.hijos)
         {
-            nombres += hijo.getNombre() + "\n";
+            nombres += hijo.getNombre() + "\n\t";
         }
         return nombres;
     }

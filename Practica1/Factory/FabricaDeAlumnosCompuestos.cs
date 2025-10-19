@@ -5,7 +5,18 @@ public class FabricaDeAlumnosCompuestos : FabricaDeComparables
         AlumnoCompuesto alumno = new AlumnoCompuesto();
         for(int i = 0; i < 5; i++)
         {
-            string n = generador.stringAleatorio(5);
+            string n = obtencionDeDatos.stringAleatorio(5);
+            alumno.agregarHijo(new AlumnoProxy(n));
+        }
+        return alumno;
+    }
+
+    public override Comparable crearPorArchivo()
+    {
+        AlumnoCompuesto alumno = new AlumnoCompuesto();
+        for(int i = 0; i < 5; i++)
+        {
+            string n = obtencionDeDatos.stringDesdeArchivo(5);
             alumno.agregarHijo(new AlumnoProxy(n));
         }
         return alumno;
@@ -17,7 +28,7 @@ public class FabricaDeAlumnosCompuestos : FabricaDeComparables
         for(int i = 0; i < 5; i++)
         {
             Console.Write("Nombre: ");
-            string n = lector.stringPorTeclado();
+            string n = obtencionDeDatos.stringPorTeclado();
             alumno.agregarHijo(new AlumnoProxy(n));
         }
         return alumno;

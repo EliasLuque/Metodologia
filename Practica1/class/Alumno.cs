@@ -6,6 +6,7 @@ public class Alumno : Persona, IObservador, IAlumno
     private double promedio;
     private EstrategiaDeComparacion estrategia;
     private int calificaion;
+    private Manejador obtencionDeDatos;
 
     public Alumno(string n, int d, int l, double p) :
     base(n, d)
@@ -13,6 +14,10 @@ public class Alumno : Persona, IObservador, IAlumno
         this.legajo = l;
         this.promedio = p;
         this.estrategia = new ComparacionPorDni();
+
+        // obtencion de datos
+        obtencionDeDatos = new LectorDeDatos(null);
+        obtencionDeDatos = new GeneradorDeDatosAleatorios(obtencionDeDatos);
     }
 
     // Métodos
@@ -21,7 +26,7 @@ public class Alumno : Persona, IObservador, IAlumno
     public void cambiarEstrategia(EstrategiaDeComparacion e) => this.estrategia = e;
     public int getCalificacion() => this.calificaion;
     public void setCalificacion(int cal) => this.calificaion = cal;
-    public virtual int responderPregunta(int pregunta) => new GeneradorDeDatosAleatorios().numeroAleatorio(3);
+    public virtual int responderPregunta(int pregunta) => obtencionDeDatos.numeroAleatorio(3);
     public string mostrarCalificacion() => $"{this.getNombre()}\t{this.calificaion}";
 
     // Interface Comparable
@@ -33,8 +38,7 @@ public class Alumno : Persona, IObservador, IAlumno
     public void prestarAtencion() => Console.WriteLine("Prestando atención");
     public void distraerse()
     {
-        GeneradorDeDatosAleatorios generador = new GeneradorDeDatosAleatorios();
-        switch (generador.numeroAleatorio(3))
+        switch (obtencionDeDatos.numeroAleatorio(3))
         {
             case 0:
                 Console.WriteLine("Mirando el celular");

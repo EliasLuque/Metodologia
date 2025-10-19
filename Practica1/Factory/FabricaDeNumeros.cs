@@ -2,14 +2,20 @@ public class FabricaDeNumeros : FabricaDeComparables
 {
     public override Comparable crearAleatorio()
     {
-        int valor = generador.numeroAleatorio(50);
+        int valor = obtencionDeDatos.numeroAleatorio(50);
+        return new Numero(valor);
+    }
+
+    public override Comparable crearPorArchivo()
+    {
+        int valor = (int)obtencionDeDatos.numeroDesdeArchivo(50);
         return new Numero(valor);
     }
 
     public override Comparable crearPorTeclado()
     {
         Console.Write("Ingrese el numero: ");
-        int valor = lector.numeroPorTeclado();
+        int valor = obtencionDeDatos.numeroPorTeclado();
         return new Numero(valor);
     }
 }

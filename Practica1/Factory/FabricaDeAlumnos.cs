@@ -2,10 +2,19 @@ public class FabricaDeAlumnos : FabricaDeComparables
 {
     public override Comparable crearAleatorio()
     {
-        string n = generador.stringAleatorio(5);
-        int d = generador.numeroAleatorio(10000000);
-        int l = generador.numeroAleatorio(5000);
-        double p = generador.numeroAleatorio(10);
+        string n = obtencionDeDatos.stringAleatorio(5);
+        int d = obtencionDeDatos.numeroAleatorio(10000000);
+        int l = obtencionDeDatos.numeroAleatorio(5000);
+        double p = obtencionDeDatos.numeroAleatorio(10);
+        return new Alumno(n, d, l, p);
+    }
+
+    public override Comparable crearPorArchivo()
+    {
+        string n = obtencionDeDatos.stringDesdeArchivo(5);
+        int d = (int)obtencionDeDatos.numeroDesdeArchivo(10000000);
+        int l = (int)obtencionDeDatos.numeroDesdeArchivo(5000);
+        double p = obtencionDeDatos.numeroDesdeArchivo(10);
         return new Alumno(n, d, l, p);
     }
 
@@ -14,16 +23,16 @@ public class FabricaDeAlumnos : FabricaDeComparables
         Console.WriteLine("Ingrese los siguientes datos");
 
         Console.Write("Nombre: ");
-        string n = lector.stringPorTeclado();
+        string n = obtencionDeDatos.stringPorTeclado();
 
         Console.Write("DNI: ");
-        int d = lector.numeroPorTeclado();
+        int d = obtencionDeDatos.numeroPorTeclado();
 
         Console.Write("Legajo: ");
-        int l = lector.numeroPorTeclado();
+        int l = obtencionDeDatos.numeroPorTeclado();
 
         Console.Write("Promedio: ");
-        double p = lector.numeroPorTeclado();
+        double p = obtencionDeDatos.numeroPorTeclado();
         return new Alumno(n, d, l, p);
     }
 }
