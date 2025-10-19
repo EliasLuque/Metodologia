@@ -17,8 +17,8 @@ public abstract class JuegoCartas
         }
 
         // obtencion de datos
-        obtencionDeDatos = new LectorDeDatos(obtencionDeDatos);
-        obtencionDeDatos = new GeneradorDeDatosAleatorios(obtencionDeDatos);
+        obtencionDeDatos = LectorDeDatos.getInstance(obtencionDeDatos);
+        obtencionDeDatos = GeneradorDeDatosAleatorios.getInstance(obtencionDeDatos);
     }
     public bool mazoVacio() => mazo.Count == 0;
     public void mezclarMazo()

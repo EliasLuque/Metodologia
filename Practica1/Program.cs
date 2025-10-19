@@ -64,8 +64,8 @@ const int ALUMNOMUYESTUDIOSO = 4;
 const int ALUMNOCOMPUESTO = 5;
 const int JUGADOR = 6;
 
-Manejador manejador = new LectorDeDatos(null);
-manejador = new GeneradorDeDatosAleatorios(manejador);
+Manejador manejador = LectorDeDatos.getInstance(null);
+manejador = GeneradorDeDatosAleatorios.getInstance(manejador);
 manejador = new LectorDeArchivos(manejador);
 FabricaDeComparables.setManejador(manejador);
 

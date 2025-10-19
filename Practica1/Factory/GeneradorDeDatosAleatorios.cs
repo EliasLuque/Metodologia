@@ -2,11 +2,19 @@ using System.Text;
 
 public class GeneradorDeDatosAleatorios: Manejador
 {
-    Random random;
-
-    public GeneradorDeDatosAleatorios(Manejador sucesor) : base(sucesor)
+    private static Random? random;
+    private static GeneradorDeDatosAleatorios generador = null;
+    private GeneradorDeDatosAleatorios(Manejador sucesor) : base(sucesor)
     {
         random = new Random();
+    }
+    public static GeneradorDeDatosAleatorios getInstance(Manejador sucesor)
+    {
+        if (generador == null)
+        {
+            generador = new GeneradorDeDatosAleatorios(sucesor);
+        }
+        return generador;
     }
     override public int numeroAleatorio(int maximo) => random.Next(maximo);
 

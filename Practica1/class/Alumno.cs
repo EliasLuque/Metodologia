@@ -16,8 +16,8 @@ public class Alumno : Persona, IObservador, IAlumno
         this.estrategia = new ComparacionPorDni();
 
         // obtencion de datos
-        obtencionDeDatos = new LectorDeDatos(null);
-        obtencionDeDatos = new GeneradorDeDatosAleatorios(obtencionDeDatos);
+        obtencionDeDatos = LectorDeDatos.getInstance(null);
+        obtencionDeDatos = GeneradorDeDatosAleatorios.getInstance(obtencionDeDatos);
     }
 
     // Métodos
